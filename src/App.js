@@ -13,8 +13,12 @@ class App extends Component {
 
   addCard = (subject, question, answer) => {
     const {cards} = this.state
-    const card = { question, subject, answer }
+    const card = { question, subject, answer, id: this.getUniqId() }
     this.setState( {cards: [card, ...cards] } )
+  }
+
+  getUniqId = () => {
+    return Math.floor((1 + Math.random()) * 10000)
   }
 
   render() {
