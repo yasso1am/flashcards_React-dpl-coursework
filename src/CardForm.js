@@ -10,10 +10,14 @@ class CardForm extends React.Component {
   handleChange = (e) => {
     const { name, value } = e.target
     this.setState({[name]:value})
+    console.log(name)
   }
 
   handleSubmit = (e) => {
+    debugger
     e.preventDefault();
+    this.props.addCard(this.state.subject, this.state.question, this.state.answer)
+    this.setState({ subject: '', question: '', answer: '' })
   }
 
   render () {
@@ -42,6 +46,9 @@ class CardForm extends React.Component {
           required
           placeholder="Answer"
           />
+          <button
+            onClick={this.handleSubmit}> 
+            Submit </button>
       </form>
     )
   }

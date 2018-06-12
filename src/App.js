@@ -6,10 +6,17 @@ import CardForm from './CardForm';
 class App extends Component {
   state = {
     cards: [
-      { subject: 'Programming', question: 'Will I ever learn this?', answer: 'Absolutely, just trust us' },
-      { subject: 'Climbing', question: 'Will this ever matter again?', answer: 'Probably not' },
+      { subject: 'Programming', question: 'Will I ever learn this?', answer: 'Absolutely - just trust us' },
+      { subject: 'Climbing', question: 'Will this ever matter again?', answer: 'Negative' },
     ]
   }
+
+  addCard = (subject, question, answer) => {
+    const {cards} = this.state
+    const card = { question, subject, answer }
+    this.setState( {cards: [card, ...cards] } )
+  }
+
   render() {
     const {cards} = this.state
 
@@ -19,10 +26,10 @@ class App extends Component {
           <p className="App-intro">
             I'm learning to use React by building another flash card app.
           </p>
-          <CardForm />
+          <CardForm addCard={this.addCard}/>
           <hr />
         <br />
-        <List cards = {cards} ></List>
+        <List cards = {cards} />
       </div>
     );
   }

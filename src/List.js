@@ -1,14 +1,16 @@
 import React from 'react'
+import Card from './Card'
 
   const List = ({ cards }) => (
     <div>
       <ul>
-       { cards.map(card => <li key={card.subject}> 
-          <h2> {card.subject} </h2> 
-          <p> {card.question} </p> 
-          <h4> {card.answer} </h4>
-          <hr />
-        </li>)} 
+       { cards.map(card => <card key={card.id} 
+            id={card.id} 
+            subject={card.subject}
+            question={card.question}
+            answer={card.answer}
+            / > 
+         )} 
       </ul>
     </div>
     )
